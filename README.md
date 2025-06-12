@@ -1,4 +1,4 @@
-enkins Cluster in Docker & Kubernetes (No Prebuilt Images)
+Jenkins Cluster in Docker & Kubernetes (No Prebuilt Images)
 📘 Project Overview
 This project demonstrates how to set up a complete Jenkins Master-Agent Cluster manually:
 
