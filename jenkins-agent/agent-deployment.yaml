@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
         - name: agent
-          image: kiran22222/jenkins-agent
+          image: kiran22222/jenkins-agent-node:v1
           ports:
             - containerPort: 22
-          securityContext:
-            runAsUser: 1000

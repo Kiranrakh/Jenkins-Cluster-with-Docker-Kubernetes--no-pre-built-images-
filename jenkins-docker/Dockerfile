@@ -1,20 +1,26 @@
+# Base image
 FROM ubuntu:22.04
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     wget \
     curl \
-    gnupg2 \
     git \
+    sudo \
+    gnupg2 \
     lsb-release \
-    sudo
+    unzip \
+    ca-certificates
 
-# Add Jenkins key & repo
-RUN curl -fsSL https://pkg.jenkins.io/debian/jenkins.io.key | gpg --dearmor -o /usr/share/keyrings/jenkins-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian binary/" | tee /etc/apt/sources.list.d/jenkins.list && \
-    apt-get update && \
-    apt-get install -y jenkins
+# Create Jenkins install directory
+RUN mkdir -p /opt/jenkins
 
+# Download latest Jenkins WAR
+RUN wget -O /opt/jenkins/jenkins.war https://get.jenkins.io/war-stable/latest/jenkins.war
+
+# Expose default Jenkins port
 EXPOSE 8080
 
-CMD ["jenkins"]
+# Start Jenkins
+CMD ["java", "-jar", "/opt/jenkins/jenkins.war"]
