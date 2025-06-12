@@ -1,1 +1,21 @@
-a
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-agent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jenkins-agent
+  template:
+    metadata:
+      labels:
+        app: jenkins-agent
+    spec:
+      containers:
+        - name: agent
+          image: kiran22222/jenkins-agent
+          ports:
+            - containerPort: 22
+          securityContext:
+            runAsUser: 1000
