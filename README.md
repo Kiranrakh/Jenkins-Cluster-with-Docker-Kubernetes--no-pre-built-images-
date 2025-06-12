@@ -1,6 +1,5 @@
-Here’s your updated and **more attractive, structured, and reader-friendly `README.md`** for GitHub — with proper formatting, emojis, section headers, and cleaner command structure:
 
----
+
 
 ```markdown
 # 🚀 Jenkins Cluster using Docker & Kubernetes (No Prebuilt Images)
